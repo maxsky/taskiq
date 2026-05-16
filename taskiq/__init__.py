@@ -24,7 +24,9 @@ from taskiq.exceptions import (
     TaskiqError,
     TaskiqResultTimeoutError,
 )
+from taskiq.flow import Flow, FlowKind
 from taskiq.funcs import gather
+from taskiq.kicker import PreparedKiq
 from taskiq.message import BrokerMessage, TaskiqMessage
 from taskiq.middlewares import (
     PrometheusMiddleware,
@@ -32,10 +34,12 @@ from taskiq.middlewares import (
     SmartRetryMiddleware,
 )
 from taskiq.result import TaskiqResult
+from taskiq.router import TaskiqRoute, TaskiqRouter
 from taskiq.scheduler.scheduled_task import ScheduledTask
 from taskiq.scheduler.scheduler import TaskiqScheduler
 from taskiq.state import TaskiqState
 from taskiq.task import AsyncTaskiqTask
+from taskiq.task_builder import TaskDefinition, task_builder
 
 __version__ = version("taskiq")
 
@@ -47,8 +51,11 @@ __all__ = [
     "AsyncTaskiqTask",
     "BrokerMessage",
     "Context",
+    "Flow",
+    "FlowKind",
     "InMemoryBroker",
     "NoResultError",
+    "PreparedKiq",
     "PrometheusMiddleware",
     "ResultGetError",
     "ResultIsReadyError",
@@ -58,6 +65,7 @@ __all__ = [
     "SendTaskError",
     "SimpleRetryMiddleware",
     "SmartRetryMiddleware",
+    "TaskDefinition",
     "TaskiqDepends",
     "TaskiqError",
     "TaskiqEvents",
@@ -66,10 +74,13 @@ __all__ = [
     "TaskiqMiddleware",
     "TaskiqResult",
     "TaskiqResultTimeoutError",
+    "TaskiqRoute",
+    "TaskiqRouter",
     "TaskiqScheduler",
     "TaskiqState",
     "ZeroMQBroker",
     "__version__",
     "async_shared_broker",
     "gather",
+    "task_builder",
 ]
